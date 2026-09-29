@@ -1,0 +1,15 @@
+{
+  "name": "kalitko-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sitio estatico demostrativo de Kalitko.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+
