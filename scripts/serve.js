@@ -1,8 +1,9 @@
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("../site/", import.meta.url).pathname.slice(1);
+const root = fileURLToPath(new URL("../site/", import.meta.url));
 const port = Number(process.env.PORT || 8000);
 const types = {
   ".css": "text/css; charset=utf-8",

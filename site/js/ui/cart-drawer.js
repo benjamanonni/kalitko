@@ -1,0 +1,95 @@
+import { buildPreview } from "../commerce/checkout.js";
+import { summarizeCart, unitPrice } from "../commerce/pricing.js";
+import { escapeHtml, formatMeasure, formatMoney, formatWeight } from "../utils/format.js";
+
+export function setupCartDrawer({ cart, products, minimumGrams }) {
+  const drawer = document.querySelector("#cart-dialog");
+  const preview = document.querySelector("#preview-dialog");
+  const cartItems = document.querySelector("#cart-items");
+  const productById = new Map(products.map((product) => [product.id, product]));
+  const dialogTriggers = new WeakMap();
+  let latestSummary = summarizeCart([], minimumGrams);
+
+  function openDialog(dialog, trigger) {
+    dialogTriggers.set(dialog, trigger || document.activeElement);
+    dialog.showModal();
+  }
+
+  function closeDialog(dialog) {
+    const trigger = dialogTriggers.get(dialog);
+    dialog.close();
+    if (trigger instanceof HTMLElement) trigger.focus();
+  }
+
+  function render(lines) {
+    latestSummary = summarizeCart(lines, minimumGrams);
+    const summary = latestSummary;
+    document.querySelectorAll("[data-count]").forEach((node) => {
+      node.textContent = summary.itemCount;
+    });
+    document.querySelector("#cart-total").textContent = formatMoney(summary.total);
+    document.querySelector("#floating-total").textContent = `${formatMoney(summary.total)} ↗`;
+    document.querySelector(".floating-bag").classList.toggle("is-visible", summary.itemCount > 0);
+    document.querySelector("#checkout").disabled = summary.itemCount === 0;
+
+    cartItems.innerHTML = summary.lines.length ? summary.lines.map(({ product, quantity }) => {
+      const price = unitPrice(product, summary.wholesaleActive);
+      return `<div class="cart-row">
+        <div><h3>${escapeHtml(product.name)}</h3>
+          <small>${formatMeasure(product.weightGrams)} · ${formatMoney(price)} c/u · muestra</small>
+          <div class="qty">
+            <button type="button" data-qty="${escapeHtml(product.id)}" data-step="-1" aria-label="Quitar una unidad de ${escapeHtml(product.name)}">−</button>
+            <output aria-label="Cantidad">${quantity}</output>
+            <button type="button" data-qty="${escapeHtml(product.id)}" data-step="1" aria-label="Agregar una unidad de ${escapeHtml(product.name)}">+</button>
+          </div>
+          <button class="remove-line" type="button" data-remove="${escapeHtml(product.id)}">Quitar</button>
+        </div>
+        <strong>${formatMoney(price * quantity)}</strong>
+      </div>`;
+    }).join("") : '<p class="cart-empty">La bolsa está vacía. Elegí algo del catálogo.</p>';
+
+    const rail = document.querySelector("#bulk-rail");
+    rail.hidden = summary.itemCount === 0;
+    if (summary.itemCount > 0) {
+      const missing = Math.max(0, minimumGrams - summary.weightGrams);
+      document.querySelector("#bulk-text").textContent = summary.wholesaleActive
+        ? `Llegaste a ${formatWeight(summary.weightGrams)}. Precios por volumen activados.`
+        : `Llevás ${formatWeight(summary.weightGrams)} de yerba elegible. Te faltan ${formatWeight(missing)}.`;
+      const progress = Math.min(100, Math.round(100 * summary.weightGrams / minimumGrams));
+      document.querySelector("#bulk-progress").style.width = `${progress}%`;
+      rail.querySelector("[role=progressbar]").setAttribute("aria-valuenow", String(progress));
+    }
+    document.querySelector("#cart-saving").textContent = summary.wholesaleActive
+      ? `Ahorro ilustrativo por volumen: ${formatMoney(summary.savings)}`
+      : "";
+    document.querySelectorAll("[data-price]").forEach((node) => {
+      const product = productById.get(node.dataset.price);
+      node.innerHTML = `${formatMoney(unitPrice(product, summary.wholesaleActive))} <small>muestra</small>`;
+    });
+  }
+
+  document.querySelectorAll("[data-open-cart]").forEach((button) => {
+    button.addEventListener("click", () => openDialog(drawer, button));
+  });
+  document.querySelector("[data-close-cart]").addEventListener("click", () => closeDialog(drawer));
+  document.querySelector("#preview-close").addEventListener("click", () => closeDialog(preview));
+  document.querySelector("#checkout").addEventListener("click", (event) => {
+    document.querySelector("#preview-text").textContent = buildPreview(latestSummary);
+    openDialog(preview, event.currentTarget);
+  });
+  cartItems.addEventListener("click", (event) => {
+    const quantityButton = event.target.closest("[data-qty]");
+    const removeButton = event.target.closest("[data-remove]");
+    if (quantityButton) cart.change(quantityButton.dataset.qty, Number(quantityButton.dataset.step));
+    if (removeButton) cart.remove(removeButton.dataset.remove);
+  });
+  [drawer, preview].forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closeDialog(dialog);
+    });
+  });
+  cart.subscribe(render);
+  render(cart.lines());
+  return { render };
+}
+

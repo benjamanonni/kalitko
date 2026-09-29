@@ -1,0 +1,23 @@
+:root {
+  --color-ink: #1d3225;
+  --color-forest: #243d2c;
+  --color-deep: #182e22;
+  --color-pine: #2d5134;
+  --color-olive: #526743;
+  --color-green: #455f39;
+  --color-sage: #a7b49d;
+  --color-cream: #f2eedf;
+  --color-paper: #faf7ec;
+  --color-story: #f6f0df;
+  --color-border: #c9c5b5;
+  --color-sun: #f3d873;
+  --color-focus: #a85318;
+  --color-muted: #576651;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: "Trebuchet MS", Arial, sans-serif;
+  --shell: 1380px;
+  --header-offset: 112px;
+  --space-section: clamp(4.5rem, 8vw, 7rem);
+  color-scheme: light;
+}
+

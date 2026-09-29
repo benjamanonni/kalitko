@@ -1,0 +1,55 @@
+[
+  {
+    "id": "cedron",
+    "name": "Cedrón",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/cedron.webp",
+    "imageWidth": 600,
+    "imageHeight": 800,
+    "alt": "Paquete de cedrón Kalitkó fotografiado sobre un tejido frente al paisaje",
+    "retailPrice": 2500,
+    "wholesalePrice": null,
+    "eligibleForWholesale": false
+  },
+  {
+    "id": "manzanilla",
+    "name": "Manzanilla",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/manzanilla.webp",
+    "imageWidth": 600,
+    "imageHeight": 800,
+    "alt": "Paquete de manzanilla Kalitkó en un paisaje natural",
+    "retailPrice": 2600,
+    "wholesalePrice": null,
+    "eligibleForWholesale": false
+  },
+  {
+    "id": "despalada",
+    "name": "Yerba Despalada",
+    "category": "yerbas",
+    "weightGrams": 500,
+    "image": "assets/images/products/yerba-despalada.webp",
+    "imageWidth": 478,
+    "imageHeight": 850,
+    "alt": "Paquete de yerba Despalada Kalitkó sostenido en un entorno natural",
+    "retailPrice": 8500,
+    "wholesalePrice": 6900,
+    "eligibleForWholesale": true
+  },
+  {
+    "id": "barbacua",
+    "name": "Yerba Barbacua",
+    "category": "yerbas",
+    "weightGrams": 500,
+    "image": "assets/images/products/yerba-barbacua.webp",
+    "imageWidth": 585,
+    "imageHeight": 850,
+    "alt": "Paquete de yerba Barbacua Kalitkó junto a un mate y tejido",
+    "retailPrice": 9000,
+    "wholesalePrice": 7200,
+    "eligibleForWholesale": true
+  }
+]
+
