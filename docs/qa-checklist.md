@@ -6,6 +6,10 @@
 - [x] 11.500 g no activa mayorista; 12.000 g sí; volver a 11.500 g lo desactiva.
 - [x] Productos no elegibles no suman al umbral y conservan precio minorista.
 - [x] Subtotales, ahorro y total sin `NaN` ni negativos.
+- [x] Variedades elegibles combinadas usan sus precios mayoristas individuales.
+- [x] `clear()`, productos desconocidos y cantidades inválidas mantienen un estado seguro.
+- [x] Vista previa construida localmente, sin URL ni mecanismo de envío real.
+- [x] Integridad de `products.json`: IDs únicos, valores válidos e imágenes existentes.
 
 ## Manual
 

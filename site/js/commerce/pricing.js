@@ -8,7 +8,7 @@ function safePrice(value) {
   return Number.isFinite(number) ? Math.max(0, number) : 0;
 }
 
-export function eligibleWeight(lines) {
+function eligibleWeight(lines) {
   return lines.reduce((total, line) => {
     const weight = Number.isFinite(Number(line.product?.weightGrams))
       ? Math.max(0, Number(line.product.weightGrams))
@@ -17,7 +17,7 @@ export function eligibleWeight(lines) {
   }, 0);
 }
 
-export function qualifiesForWholesale(lines, minimumGrams) {
+function qualifiesForWholesale(lines, minimumGrams) {
   return eligibleWeight(lines) >= Math.max(0, Number(minimumGrams) || 0);
 }
 
@@ -34,7 +34,7 @@ export function unitPrice(product, wholesaleActive) {
   return safePrice(product?.retailPrice);
 }
 
-export function lineSubtotal(product, quantity, wholesaleActive) {
+function lineSubtotal(product, quantity, wholesaleActive) {
   return unitPrice(product, wholesaleActive) * safeQuantity(quantity);
 }
 
@@ -43,7 +43,7 @@ export function summarizeCart(lines, minimumGrams) {
     .map((line) => ({ product: line.product, quantity: safeQuantity(line.quantity) }))
     .filter((line) => line.product && line.quantity > 0);
   const weightGrams = eligibleWeight(normalized);
-  const wholesaleActive = weightGrams >= Math.max(0, Number(minimumGrams) || 0);
+  const wholesaleActive = qualifiesForWholesale(normalized, minimumGrams);
   const retailTotal = normalized.reduce(
     (total, line) => total + safePrice(line.product.retailPrice) * line.quantity,
     0

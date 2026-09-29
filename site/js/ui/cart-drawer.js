@@ -1,4 +1,4 @@
-import { buildPreview } from "../commerce/checkout.js";
+import { buildPreview } from "../commerce/preview.js";
 import { summarizeCart, unitPrice } from "../commerce/pricing.js";
 import { escapeHtml, formatMeasure, formatMoney, formatWeight } from "../utils/format.js";
 
@@ -30,7 +30,7 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
     document.querySelector("#cart-total").textContent = formatMoney(summary.total);
     document.querySelector("#floating-total").textContent = `${formatMoney(summary.total)} ↗`;
     document.querySelector(".floating-bag").classList.toggle("is-visible", summary.itemCount > 0);
-    document.querySelector("#checkout").disabled = summary.itemCount === 0;
+    document.querySelector("#preview-order").disabled = summary.itemCount === 0;
 
     cartItems.innerHTML = summary.lines.length ? summary.lines.map(({ product, quantity }) => {
       const price = unitPrice(product, summary.wholesaleActive);
@@ -73,7 +73,7 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
   });
   document.querySelector("[data-close-cart]").addEventListener("click", () => closeDialog(drawer));
   document.querySelector("#preview-close").addEventListener("click", () => closeDialog(preview));
-  document.querySelector("#checkout").addEventListener("click", (event) => {
+  document.querySelector("#preview-order").addEventListener("click", (event) => {
     document.querySelector("#preview-text").textContent = buildPreview(latestSummary);
     openDialog(preview, event.currentTarget);
   });

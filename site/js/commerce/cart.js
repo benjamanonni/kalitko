@@ -15,7 +15,9 @@ export function createCart(products) {
     },
     change(id, amount) {
       if (!productsById.has(id)) return 0;
-      const next = safeQuantity((quantities.get(id) || 0) + Number(amount || 0));
+      const numericAmount = Number(amount);
+      if (!Number.isFinite(numericAmount)) return api.quantity(id);
+      const next = safeQuantity((quantities.get(id) || 0) + numericAmount);
       if (next > 0) quantities.set(id, next);
       else quantities.delete(id);
       notify();
