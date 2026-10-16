@@ -7,7 +7,7 @@
     "image": "assets/images/products/cedron.webp",
     "imageWidth": 900,
     "imageHeight": 1125,
-    "alt": "Paquete de cedrón Kalitkó fotografiado sobre un tejido frente al paisaje",
+    "alt": "Paquete de cedrón Kalitko fotografiado sobre un tejido frente al paisaje",
     "retailPrice": 2500,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -20,7 +20,7 @@
     "image": "assets/images/products/manzanilla.webp",
     "imageWidth": 900,
     "imageHeight": 1125,
-    "alt": "Paquete de manzanilla Kalitkó en un paisaje natural",
+    "alt": "Paquete de manzanilla Kalitko en un paisaje natural",
     "retailPrice": 2600,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -33,7 +33,7 @@
     "image": "assets/images/products/yerba-tradicional.webp",
     "imageWidth": 900,
     "imageHeight": 1125,
-    "alt": "Paquete de yerba Tradicional Kalitkó junto a un mate sobre un tejido",
+    "alt": "Paquete de yerba Tradicional Kalitko junto a un mate sobre un tejido",
     "retailPrice": 6000,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -46,7 +46,7 @@
     "image": "assets/images/products/yerba-despalada.webp",
     "imageWidth": 900,
     "imageHeight": 1125,
-    "alt": "Paquete de yerba Despalada Kalitkó junto a un mate sobre un tejido",
+    "alt": "Paquete de yerba Despalada Kalitko junto a un mate sobre un tejido",
     "retailPrice": 8500,
     "wholesalePrice": 6900,
     "eligibleForWholesale": true
@@ -59,7 +59,7 @@
     "image": "assets/images/products/yerba-barbacua.webp",
     "imageWidth": 900,
     "imageHeight": 1125,
-    "alt": "Paquete de yerba Barbacua Kalitkó junto a un mate y tejido",
+    "alt": "Paquete de yerba Barbacua Kalitko junto a un mate y tejido",
     "retailPrice": 9000,
     "wholesalePrice": 7200,
     "eligibleForWholesale": true

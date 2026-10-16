@@ -10,7 +10,7 @@ export function buildPreview(summary) {
   return [
     "VISTA PREVIA — NO SE ENVÍA",
     "",
-    "Hola Kalitkó, quisiera consultar este pedido:",
+    "Hola Kalitko, quisiera consultar este pedido:",
     "",
     ...productLines,
     "",
@@ -20,7 +20,7 @@ export function buildPreview(summary) {
       : "Beneficio por volumen: todavía no alcanzado.",
     `Total ilustrativo de productos: ${formatMoney(summary.total)}`,
     "",
-    "Envío, disponibilidad, importe final y transferencia a confirmar con Kalitkó."
+    "Envío, disponibilidad, importe final y transferencia a confirmar con Kalitko."
   ].join("\n");
 }
 
