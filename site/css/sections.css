@@ -13,7 +13,7 @@
 .ticker span { font: 400 clamp(.9rem, 1.75vw, 1.55rem) var(--font-serif); letter-spacing: -.015em; white-space: nowrap; }
 .ticker b { font-size: .8rem; }
 
-.catalogue { padding-block: 94px 102px; }
+.catalogue { padding-block: 94px 102px; background: #fefbf2; }
 .catalogue-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 31px; }
 .catalogue-head h2 { max-width: 650px; margin-top: 14px; font: 900 clamp(2.9rem, 5.1vw, 5.4rem)/1.02 var(--font-serif); letter-spacing: -.075em; text-transform: uppercase; }
 .head-info { max-width: 280px; color: var(--color-muted); font-size: .82rem; line-height: 1.65; }

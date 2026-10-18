@@ -2,9 +2,9 @@ import { escapeHtml, formatMeasure, formatMoney } from "../utils/format.js";
 
 export function renderCatalogue(container, products) {
   container.innerHTML = products.map((product, index) => `
-    <article class="product" data-category="${escapeHtml(product.category)}" aria-label="${escapeHtml(product.name)}">
+    <article class="product" data-category="${escapeHtml(product.category)}" data-product-id="${escapeHtml(product.id)}" aria-label="${escapeHtml(product.name)}">
       <div class="product-photo">
-        <img src="${escapeHtml(product.image)}" width="${product.imageWidth}" height="${product.imageHeight}"
+        <img src="${escapeHtml(product.image)}"${product.imageSrcset ? ` srcset="${escapeHtml(product.imageSrcset)}" sizes="${escapeHtml(product.imageSizes)}"` : ""} width="${product.imageWidth}" height="${product.imageHeight}"
           loading="lazy" decoding="async" alt="${escapeHtml(product.alt)}">
         <span class="photo-index">${String(index + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}</span>
       </div>
