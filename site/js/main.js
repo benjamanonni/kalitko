@@ -1,8 +1,10 @@
 import { WHOLESALE_MIN_GRAMS } from "./config.js";
 import { createCart } from "./commerce/cart.js";
 import { setupCartDrawer } from "./ui/cart-drawer.js";
-import { renderCatalogue, setupFilters } from "./ui/catalogue.js";
+import { setupCatalogue } from "./ui/catalogue.js";
+import { setupImageLightbox } from "./ui/image-lightbox.js";
 import { setupNavigation } from "./ui/navigation.js";
+import { setupProductDialog } from "./ui/product-dialog.js";
 import { setupTimeline } from "./ui/timeline.js";
 
 async function loadProducts() {
@@ -16,16 +18,29 @@ async function start() {
   setupTimeline();
   const products = await loadProducts();
   const list = document.querySelector("#product-list");
-  renderCatalogue(list, products);
-  setupFilters(list);
   const cart = createCart(products);
+  const status = document.querySelector("#status");
+  const addProduct = (id) => {
+    if (cart.add(id) > 0) status.textContent = "Producto agregado a la bolsa.";
+  };
+  const lightbox = setupImageLightbox();
+  const productDialog = setupProductDialog({
+    onAdd: addProduct,
+    onOpenImage: lightbox.open
+  });
+
+  setupCatalogue({
+    container: list,
+    products,
+    onShowDetail: productDialog.open,
+    onOpenImage: lightbox.open
+  });
   setupCartDrawer({ cart, products, minimumGrams: WHOLESALE_MIN_GRAMS });
 
   list.addEventListener("click", (event) => {
     const button = event.target.closest("[data-add]");
     if (!button) return;
-    cart.add(button.dataset.add);
-    document.querySelector("#status").textContent = "Producto agregado a la bolsa.";
+    addProduct(button.dataset.add);
   });
 }
 

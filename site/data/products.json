@@ -1,16 +1,86 @@
 [
   {
+    "id": "boldo",
+    "name": "Boldo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/boldo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de boldo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "burrito",
+    "name": "Burrito",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/burrito.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de burrito Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "cardo-santo",
+    "name": "Cardo Santo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/cardo-santo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de cardo santo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "carqueja",
+    "name": "Carqueja",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/carqueja.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de carqueja Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "cascarilla-de-cacao",
+    "name": "Cascarilla de Cacao",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/cascarilla-de-cacao.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de cascarilla de cacao Kalitko sobre fondo cálido claro"
+  },
+  {
     "id": "cedron",
     "name": "Cedrón",
     "category": "hierbas",
     "weightGrams": 20,
     "image": "assets/images/products/cedron.webp",
-    "imageWidth": 900,
-    "imageHeight": 1125,
-    "alt": "Paquete de cedrón Kalitko fotografiado sobre un tejido frente al paisaje",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de cedrón Kalitko sobre fondo cálido claro",
     "retailPrice": 2500,
     "wholesalePrice": null,
     "eligibleForWholesale": false
+  },
+  {
+    "id": "cola-de-caballo",
+    "name": "Cola de Caballo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/cola-de-caballo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de cola de caballo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "eucalipto",
+    "name": "Eucalipto",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/eucalipto.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de eucalipto Kalitko sobre fondo cálido claro"
   },
   {
     "id": "manzanilla",
@@ -18,12 +88,167 @@
     "category": "hierbas",
     "weightGrams": 20,
     "image": "assets/images/products/manzanilla.webp",
-    "imageWidth": 900,
-    "imageHeight": 1125,
-    "alt": "Paquete de manzanilla Kalitko en un paisaje natural",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de manzanilla Kalitko sobre fondo cálido claro",
     "retailPrice": 2600,
     "wholesalePrice": null,
     "eligibleForWholesale": false
+  },
+  {
+    "id": "marcela",
+    "name": "Marcela",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/marcela.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de marcela Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "melisa",
+    "name": "Melisa",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/melisa.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de melisa Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "menta",
+    "name": "Menta",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/menta.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de menta Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "paico",
+    "name": "Paico",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/paico.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de paico Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "palo-azul",
+    "name": "Palo Azul",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/palo-azul.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de palo azul Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "peperina",
+    "name": "Peperina",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/peperina.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de peperina Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "poleo",
+    "name": "Poleo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/poleo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de poleo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "te-negro",
+    "name": "Té Negro",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/te-negro.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de té negro Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "te-rojo",
+    "name": "Té Rojo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/te-rojo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de té rojo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "te-verde",
+    "name": "Té Verde",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/te-verde.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de té verde Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "tilo",
+    "name": "Tilo",
+    "category": "hierbas",
+    "weightGrams": 20,
+    "image": "assets/images/products/tilo.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de tilo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "blend-acidez",
+    "name": "Acidez",
+    "category": "blends",
+    "image": "assets/images/products/blend-acidez.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete del blend Acidez Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "blend-adelgazar",
+    "name": "Adelgazar",
+    "category": "blends",
+    "image": "assets/images/products/blend-adelgazar.webp",
+    "imageWidth": 1024,
+    "imageHeight": 1536,
+    "alt": "Paquete del blend Adelgazar Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "blend-floral",
+    "name": "Floral",
+    "category": "blends",
+    "image": "assets/images/products/blend-floral.webp",
+    "imageWidth": 439,
+    "imageHeight": 662,
+    "alt": "Paquete del blend Floral Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "blend-lenitivo",
+    "name": "Lenitivo",
+    "category": "blends",
+    "image": "assets/images/products/blend-lenitivo.webp",
+    "imageWidth": 467,
+    "imageHeight": 700,
+    "alt": "Paquete del blend Lenitivo Kalitko sobre fondo cálido claro"
+  },
+  {
+    "id": "blend-otonal",
+    "name": "Otoñal",
+    "category": "blends",
+    "image": "assets/images/products/blend-otonal.webp",
+    "imageWidth": 1024,
+    "imageHeight": 1536,
+    "alt": "Paquete del blend Otoñal Kalitko sobre fondo cálido claro"
   },
   {
     "id": "tradicional",
@@ -31,11 +256,27 @@
     "category": "yerbas",
     "weightGrams": 500,
     "image": "assets/images/products/yerba-tradicional.webp",
-    "imageWidth": 900,
-    "imageHeight": 1200,
-    "imageSrcset": "assets/images/products/yerba-tradicional-300.webp 300w, assets/images/products/yerba-tradicional-600.webp 600w, assets/images/products/yerba-tradicional.webp 900w",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "imageSrcset": "assets/images/products/yerba-tradicional-300.webp 300w, assets/images/products/yerba-tradicional-600.webp 600w, assets/images/products/yerba-tradicional.webp 1122w",
     "imageSizes": "(max-width: 1040px) 45vw, 23vw",
-    "alt": "Paquete de yerba Tradicional Kalitko junto a un mate sobre un tejido",
+    "alt": "Paquete de yerba Tradicional Kalitko junto a un mate sobre fondo cálido claro",
+    "gallery": [
+      {
+        "src": "assets/images/products/yerba-tradicional.webp",
+        "alt": "Frente de Yerba Tradicional Kalitko junto a un mate",
+        "type": "front",
+        "width": 1122,
+        "height": 1402
+      },
+      {
+        "src": "assets/images/products/yerba-tradicional-back.webp",
+        "alt": "Etiqueta trasera de Yerba Tradicional Kalitko con su descripción impresa",
+        "type": "back",
+        "width": 483,
+        "height": 262
+      }
+    ],
     "retailPrice": 6000,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -46,11 +287,27 @@
     "category": "yerbas",
     "weightGrams": 500,
     "image": "assets/images/products/yerba-despalada.webp",
-    "imageWidth": 900,
-    "imageHeight": 1200,
-    "imageSrcset": "assets/images/products/yerba-despalada-300.webp 300w, assets/images/products/yerba-despalada-600.webp 600w, assets/images/products/yerba-despalada.webp 900w",
+    "imageWidth": 563,
+    "imageHeight": 703,
+    "imageSrcset": "assets/images/products/yerba-despalada-300.webp 300w, assets/images/products/yerba-despalada.webp 563w",
     "imageSizes": "(max-width: 1040px) 45vw, 23vw",
-    "alt": "Paquete de yerba Despalada Kalitko junto a un mate sobre un tejido",
+    "alt": "Paquete de yerba Despalada Kalitko junto a un mate sobre fondo cálido claro",
+    "gallery": [
+      {
+        "src": "assets/images/products/yerba-despalada.webp",
+        "alt": "Frente de Yerba Despalada Kalitko junto a un mate",
+        "type": "front",
+        "width": 563,
+        "height": 703
+      },
+      {
+        "src": "assets/images/products/yerba-despalada-back.webp",
+        "alt": "Etiqueta trasera de Yerba Despalada Kalitko con su descripción impresa",
+        "type": "back",
+        "width": 486,
+        "height": 262
+      }
+    ],
     "retailPrice": 8500,
     "wholesalePrice": 6900,
     "eligibleForWholesale": true
@@ -61,14 +318,85 @@
     "category": "yerbas",
     "weightGrams": 500,
     "image": "assets/images/products/yerba-barbacua.webp",
-    "imageWidth": 900,
-    "imageHeight": 1200,
-    "imageSrcset": "assets/images/products/yerba-barbacua-300.webp 300w, assets/images/products/yerba-barbacua-600.webp 600w, assets/images/products/yerba-barbacua.webp 900w",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "imageSrcset": "assets/images/products/yerba-barbacua-300.webp 300w, assets/images/products/yerba-barbacua-600.webp 600w, assets/images/products/yerba-barbacua.webp 1122w",
     "imageSizes": "(max-width: 1040px) 45vw, 23vw",
-    "alt": "Paquete de yerba Barbacua Kalitko junto a un mate y tejido",
+    "alt": "Paquete de yerba Barbacua Kalitko junto a un mate sobre fondo cálido claro",
+    "gallery": [
+      {
+        "src": "assets/images/products/yerba-barbacua.webp",
+        "alt": "Frente de Yerba Barbacua Kalitko junto a un mate",
+        "type": "front",
+        "width": 1122,
+        "height": 1402
+      },
+      {
+        "src": "assets/images/products/yerba-barbacua-back.webp",
+        "alt": "Etiqueta trasera de Yerba Barbacua Kalitko con su descripción impresa",
+        "type": "back",
+        "width": 611,
+        "height": 282
+      }
+    ],
     "retailPrice": 9000,
     "wholesalePrice": 7200,
     "eligibleForWholesale": true
+  },
+  {
+    "id": "canchada",
+    "name": "Yerba Canchada",
+    "category": "yerbas",
+    "weightGrams": 500,
+    "image": "assets/images/products/yerba-canchada.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de yerba Canchada Kalitko junto a un mate sobre fondo cálido claro",
+    "gallery": [
+      {
+        "src": "assets/images/products/yerba-canchada.webp",
+        "alt": "Frente de Yerba Canchada Kalitko junto a un mate",
+        "type": "front",
+        "width": 1122,
+        "height": 1402
+      },
+      {
+        "src": "assets/images/products/yerba-canchada-back.webp",
+        "alt": "Etiqueta trasera de Yerba Canchada Kalitko con su descripción impresa",
+        "type": "back",
+        "width": 610,
+        "height": 282
+      }
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
+  },
+  {
+    "id": "premium",
+    "name": "Yerba Premium",
+    "category": "yerbas",
+    "weightGrams": 500,
+    "image": "assets/images/products/yerba-premium.webp",
+    "imageWidth": 1122,
+    "imageHeight": 1402,
+    "alt": "Paquete de yerba Premium Kalitko junto a un mate sobre fondo cálido claro",
+    "gallery": [
+      {
+        "src": "assets/images/products/yerba-premium.webp",
+        "alt": "Frente de Yerba Premium Kalitko junto a un mate",
+        "type": "front",
+        "width": 1122,
+        "height": 1402
+      },
+      {
+        "src": "assets/images/products/yerba-premium-back.webp",
+        "alt": "Etiqueta trasera de Yerba Premium Kalitko con su descripción impresa",
+        "type": "back",
+        "width": 486,
+        "height": 262
+      }
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   }
 ]
-

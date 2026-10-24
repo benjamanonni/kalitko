@@ -79,12 +79,13 @@
         <div class="catalogue-controls">
           <div class="filters" role="group" aria-label="Filtrar productos">
             <button type="button" data-filter="all" aria-pressed="true">Todos</button>
-            <button type="button" data-filter="hierbas" aria-pressed="false">Hierbas</button>
             <button type="button" data-filter="yerbas" aria-pressed="false">Yerbas</button>
+            <button type="button" data-filter="blends" aria-pressed="false">Blends</button>
+            <button type="button" data-filter="hierbas" aria-pressed="false">Yuyos</button>
           </div>
 
         </div>
-        <div class="products" id="product-list"><noscript>Activá JavaScript para ver el catálogo demostrativo y usar la
+        <div class="catalogue-content" id="product-list"><noscript>Activá JavaScript para ver el catálogo demostrativo y usar la
             bolsa.</noscript></div>
       </div>
     </section>
@@ -237,8 +238,9 @@
         </div>
       </div>
       <div class="drawer-foot">
-        <div class="totals"><span>Total ilustrativo</span><strong id="cart-total">$ 0</strong></div>
+        <div class="totals"><span id="cart-total-label">Total ilustrativo</span><strong id="cart-total">$ 0</strong></div>
         <p class="savings" id="cart-saving" aria-live="polite"></p>
+        <p class="pricing-note" id="cart-pricing-note" aria-live="polite"></p>
         <p class="disclaimer">Envío, disponibilidad, importe final y transferencia a confirmar por Kalitko. Esta demo no
           realiza compras.</p><button class="checkout" id="preview-order" type="button" disabled>Ver vista previa del
           pedido</button>
@@ -249,6 +251,32 @@
     <h2 id="preview-heading">Vista previa del pedido</h2>
     <p>Así se prepararía una consulta. Este prototipo no abre WhatsApp, no envía mensajes y no cobra.</p>
     <pre id="preview-text"></pre><button class="checkout" id="preview-close" type="button">Cerrar</button>
+  </dialog>
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="product-dialog-title">
+    <div class="product-dialog-inner">
+      <button class="dialog-close" type="button" data-close-product aria-label="Cerrar detalle">×</button>
+      <div class="product-dialog-grid">
+        <div class="detail-gallery">
+          <button class="detail-main-button" type="button" data-detail-main-button>
+            <img class="detail-main-image" data-detail-main-image width="1" height="1" alt="">
+          </button>
+          <div class="detail-thumbnails" data-detail-thumbnails aria-label="Imágenes del producto"></div>
+        </div>
+        <div class="detail-copy">
+          <p class="product-type" data-detail-meta></p>
+          <h2 id="product-dialog-title"></h2>
+          <div data-detail-sections></div>
+          <p class="product-price detail-price" data-detail-price></p>
+          <button class="add-product detail-add" type="button" data-detail-add>
+            Agregar <span aria-hidden="true">+</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="image-lightbox" id="image-lightbox" aria-label="Imagen ampliada del producto">
+    <button class="dialog-close lightbox-close" type="button" data-close-lightbox aria-label="Cerrar imagen ampliada">×</button>
+    <img data-lightbox-image width="1" height="1" alt="">
   </dialog>
   <p class="sr-only" id="status" role="status" aria-live="polite"></p>
   <button class="floating-bag" type="button" data-open-cart><span>Mi bolsa · <span data-count>0</span>

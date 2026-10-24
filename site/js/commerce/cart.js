@@ -1,4 +1,4 @@
-import { safeQuantity } from "./pricing.js";
+import { canAddToCart, safeQuantity } from "./pricing.js";
 
 export function createCart(products) {
   const productsById = new Map(products.map((product) => [product.id, product]));
@@ -14,7 +14,8 @@ export function createCart(products) {
       return api.change(id, amount);
     },
     change(id, amount) {
-      if (!productsById.has(id)) return 0;
+      const product = productsById.get(id);
+      if (!canAddToCart(product)) return 0;
       const numericAmount = Number(amount);
       if (!Number.isFinite(numericAmount)) return api.quantity(id);
       const next = safeQuantity((quantities.get(id) || 0) + numericAmount);
@@ -24,7 +25,8 @@ export function createCart(products) {
       return next;
     },
     set(id, quantity) {
-      if (!productsById.has(id)) return 0;
+      const product = productsById.get(id);
+      if (!canAddToCart(product)) return 0;
       const next = safeQuantity(quantity);
       if (next > 0) quantities.set(id, next);
       else quantities.delete(id);

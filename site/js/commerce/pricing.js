@@ -3,6 +3,19 @@ export function safeQuantity(value) {
   return Number.isFinite(number) ? Math.max(0, Math.floor(number)) : 0;
 }
 
+export function hasValidPrice(product) {
+  const price = Number(product?.retailPrice);
+  return Number.isFinite(price) && price > 0;
+}
+
+export function isPriceOnRequest(product) {
+  return product?.priceOnRequest === true && !hasValidPrice(product);
+}
+
+export function canAddToCart(product) {
+  return hasValidPrice(product) || isPriceOnRequest(product);
+}
+
 function safePrice(value) {
   const number = Number(value);
   return Number.isFinite(number) ? Math.max(0, number) : 0;
@@ -31,11 +44,12 @@ export function unitPrice(product, wholesaleActive) {
   ) {
     return safePrice(wholesale);
   }
-  return safePrice(product?.retailPrice);
+  return hasValidPrice(product) ? safePrice(product.retailPrice) : null;
 }
 
 function lineSubtotal(product, quantity, wholesaleActive) {
-  return unitPrice(product, wholesaleActive) * safeQuantity(quantity);
+  const price = unitPrice(product, wholesaleActive);
+  return price === null ? 0 : price * safeQuantity(quantity);
 }
 
 export function summarizeCart(lines, minimumGrams) {
@@ -45,7 +59,9 @@ export function summarizeCart(lines, minimumGrams) {
   const weightGrams = eligibleWeight(normalized);
   const wholesaleActive = qualifiesForWholesale(normalized, minimumGrams);
   const retailTotal = normalized.reduce(
-    (total, line) => total + safePrice(line.product.retailPrice) * line.quantity,
+    (total, line) => total + (hasValidPrice(line.product)
+      ? safePrice(line.product.retailPrice) * line.quantity
+      : 0),
     0
   );
   const total = normalized.reduce(
@@ -56,6 +72,15 @@ export function summarizeCart(lines, minimumGrams) {
   return {
     lines: normalized,
     itemCount: normalized.reduce((sum, line) => sum + line.quantity, 0),
+    pricedItemCount: normalized.reduce(
+      (sum, line) => sum + (hasValidPrice(line.product) ? line.quantity : 0),
+      0
+    ),
+    quotedItemCount: normalized.reduce(
+      (sum, line) => sum + (isPriceOnRequest(line.product) ? line.quantity : 0),
+      0
+    ),
+    hasQuotedProducts: normalized.some((line) => isPriceOnRequest(line.product)),
     weightGrams,
     wholesaleActive,
     retailTotal,

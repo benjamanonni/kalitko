@@ -1,5 +1,5 @@
 import { buildPreview } from "../commerce/preview.js";
-import { summarizeCart, unitPrice } from "../commerce/pricing.js";
+import { isPriceOnRequest, summarizeCart, unitPrice } from "../commerce/pricing.js";
 import { escapeHtml, formatMeasure, formatMoney, formatWeight } from "../utils/format.js";
 
 export function setupCartDrawer({ cart, products, minimumGrams }) {
@@ -27,16 +27,26 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
     document.querySelectorAll("[data-count]").forEach((node) => {
       node.textContent = summary.itemCount;
     });
-    document.querySelector("#cart-total").textContent = formatMoney(summary.total);
-    document.querySelector("#floating-total").textContent = `${formatMoney(summary.total)} ↗`;
+    const totalLabel = document.querySelector("#cart-total-label");
+    const total = document.querySelector("#cart-total");
+    totalLabel.textContent = summary.hasQuotedProducts
+      ? summary.pricedItemCount > 0 ? "Subtotal de productos con precio" : "Productos a cotizar"
+      : "Total ilustrativo";
+    total.textContent = summary.hasQuotedProducts && summary.pricedItemCount === 0
+      ? "Precio a confirmar"
+      : formatMoney(summary.total);
+    document.querySelector("#floating-total").textContent = summary.hasQuotedProducts && summary.pricedItemCount === 0
+      ? "A confirmar ↗"
+      : `${formatMoney(summary.total)} ↗`;
     document.querySelector(".floating-bag").classList.toggle("is-visible", summary.itemCount > 0);
     document.querySelector("#preview-order").disabled = summary.itemCount === 0;
 
     cartItems.innerHTML = summary.lines.length ? summary.lines.map(({ product, quantity }) => {
       const price = unitPrice(product, summary.wholesaleActive);
+      const pending = isPriceOnRequest(product);
       return `<div class="cart-row">
         <div><h3>${escapeHtml(product.name)}</h3>
-          <small>${formatMeasure(product.weightGrams)} · ${formatMoney(price)} c/u · muestra</small>
+          <small>${formatMeasure(product.weightGrams)} · ${pending ? "Precio a confirmar" : `${formatMoney(price)} c/u · muestra`}</small>
           <div class="qty">
             <button type="button" data-qty="${escapeHtml(product.id)}" data-step="-1" aria-label="Quitar una unidad de ${escapeHtml(product.name)}">−</button>
             <output aria-label="Cantidad">${quantity}</output>
@@ -44,7 +54,7 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
           </div>
           <button class="remove-line" type="button" data-remove="${escapeHtml(product.id)}">Quitar</button>
         </div>
-        <strong>${formatMoney(price * quantity)}</strong>
+        <strong>${pending ? "Precio a confirmar" : formatMoney(price * quantity)}</strong>
       </div>`;
     }).join("") : '<p class="cart-empty">La bolsa está vacía. Elegí algo del catálogo.</p>';
 
@@ -61,6 +71,9 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
     }
     document.querySelector("#cart-saving").textContent = summary.wholesaleActive
       ? `Ahorro ilustrativo por volumen: ${formatMoney(summary.savings)}`
+      : "";
+    document.querySelector("#cart-pricing-note").textContent = summary.hasQuotedProducts
+      ? "Este pedido incluye productos cuyo precio se confirmará con Kalitko. El subtotal no representa el importe final completo."
       : "";
     document.querySelectorAll("[data-price]").forEach((node) => {
       const product = productById.get(node.dataset.price);
