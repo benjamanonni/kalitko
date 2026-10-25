@@ -32,6 +32,28 @@ function renderTechnicalSections(product) {
     .join("");
 }
 
+function renderProperties(container, product) {
+  container.replaceChildren();
+  const properties = Array.isArray(product.properties)
+    ? product.properties.filter((property) => typeof property === "string" && property.trim())
+    : [];
+  container.hidden = properties.length === 0;
+  if (!properties.length) return;
+
+  const section = document.createElement("section");
+  section.className = "detail-section detail-properties";
+  const heading = document.createElement("h3");
+  heading.textContent = "Propiedades";
+  const list = document.createElement("ul");
+  properties.forEach((property) => {
+    const item = document.createElement("li");
+    item.textContent = property;
+    list.append(item);
+  });
+  section.append(heading, list);
+  container.append(section);
+}
+
 function thumbnailLabel(image) {
   if (image.type === "back") return "Ver etiqueta trasera";
   if (image.type === "front") return "Ver imagen frontal";
@@ -45,6 +67,7 @@ export function setupProductDialog({ onAdd, onOpenImage }) {
   const meta = dialog.querySelector("[data-detail-meta]");
   const price = dialog.querySelector("[data-detail-price]");
   const sections = dialog.querySelector("[data-detail-sections]");
+  const properties = dialog.querySelector("[data-detail-properties]");
   const mainButton = dialog.querySelector("[data-detail-main-button]");
   const mainImage = dialog.querySelector("[data-detail-main-image]");
   const thumbnails = dialog.querySelector("[data-detail-thumbnails]");
@@ -97,6 +120,7 @@ export function setupProductDialog({ onAdd, onOpenImage }) {
       : "Precio a confirmar";
     price.classList.toggle("product-price--pending", !hasValidPrice(product));
     sections.innerHTML = renderTechnicalSections(product);
+    renderProperties(properties, product);
     addButton.hidden = !canAddToCart(product);
     renderGallery();
     dialog.showModal();

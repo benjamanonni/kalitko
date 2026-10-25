@@ -7,7 +7,16 @@
     "image": "assets/images/products/boldo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de boldo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de boldo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Hepatoprotector",
+      "Digestivo",
+      "Colerético",
+      "Desintoxicante",
+      "Antiinflamatorio hepático"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "burrito",
@@ -17,7 +26,16 @@
     "image": "assets/images/products/burrito.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de burrito Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de burrito Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Digestivo",
+      "Refrescante",
+      "Estimulante natural",
+      "Carminativo",
+      "Antiinflamatorio estomacal"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "cardo-santo",
@@ -27,7 +45,16 @@
     "image": "assets/images/products/cardo-santo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de cardo santo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de cardo santo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Hepatoprotector",
+      "Digestivo",
+      "Tónico amargo",
+      "Depurativo",
+      "Estimulante del apetito"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "carqueja",
@@ -37,7 +64,16 @@
     "image": "assets/images/products/carqueja.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de carqueja Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de carqueja Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Hepatoprotectora",
+      "Digestiva",
+      "Hipoglucemiante",
+      "Depurativa",
+      "Antiinflamatoria"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "cascarilla-de-cacao",
@@ -47,7 +83,16 @@
     "image": "assets/images/products/cascarilla-de-cacao.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de cascarilla de cacao Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de cascarilla de cacao Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Antioxidante",
+      "Energizante natural",
+      "Antidepresivo suave",
+      "Digestivo",
+      "Estimulante circulatorio"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "cedron",
@@ -58,6 +103,13 @@
     "imageWidth": 1122,
     "imageHeight": 1402,
     "alt": "Paquete de cedrón Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Calmante",
+      "Digestivo",
+      "Sedante",
+      "Antiespasmódico",
+      "Refrescante"
+    ],
     "retailPrice": 2500,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -70,7 +122,16 @@
     "image": "assets/images/products/cola-de-caballo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de cola de caballo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de cola de caballo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Diurético",
+      "Depurativo",
+      "Regenerador tisular",
+      "Remineralizante",
+      "Antiinflamatorio"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "eucalipto",
@@ -80,7 +141,16 @@
     "image": "assets/images/products/eucalipto.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de eucalipto Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de eucalipto Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Expectorante",
+      "Descongestivo",
+      "Antiséptico respiratorio",
+      "Antiinflamatorio",
+      "Refrescante"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "manzanilla",
@@ -91,6 +161,13 @@
     "imageWidth": 1122,
     "imageHeight": 1402,
     "alt": "Paquete de manzanilla Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Digestivo",
+      "Calmante",
+      "Antiespasmódico",
+      "Antiácido natural",
+      "Sedante suave"
+    ],
     "retailPrice": 2600,
     "wholesalePrice": null,
     "eligibleForWholesale": false
@@ -103,7 +180,16 @@
     "image": "assets/images/products/marcela.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de marcela Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de marcela Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Hepatoprotectora",
+      "Digestiva",
+      "Antiinflamatoria",
+      "Antiespasmódica",
+      "Calmante menstrual"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "melisa",
@@ -113,7 +199,16 @@
     "image": "assets/images/products/melisa.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de melisa Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de melisa Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Calmante",
+      "Sedante",
+      "Antiespasmódico",
+      "Digestivo",
+      "Relajante nervioso"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "menta",
@@ -123,7 +218,17 @@
     "image": "assets/images/products/menta.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de menta Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de menta Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Digestivas",
+      "Analgésicas",
+      "Antiespasmódicas",
+      "Antiinflamatorias",
+      "Antioxidantes",
+      "Antimicrobianas"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "paico",
@@ -133,7 +238,16 @@
     "image": "assets/images/products/paico.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de paico Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de paico Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Antiparasitario",
+      "Digestivo",
+      "Carminativo",
+      "Antiinflamatorio abdominal",
+      "Antiespasmódico"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "palo-azul",
@@ -143,7 +257,16 @@
     "image": "assets/images/products/palo-azul.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de palo azul Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de palo azul Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Diurético",
+      "Depurativo",
+      "Antiinflamatorio renal",
+      "Desintoxicante",
+      "Purificador urinario"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "peperina",
@@ -153,7 +276,16 @@
     "image": "assets/images/products/peperina.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de peperina Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de peperina Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Digestiva",
+      "Antiespasmódica",
+      "Expectorante",
+      "Antibacteriana",
+      "Refrescante-estimulante"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "poleo",
@@ -163,7 +295,16 @@
     "image": "assets/images/products/poleo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de poleo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de poleo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Digestivo",
+      "Carminativo",
+      "Estimulante",
+      "Antiespasmódico",
+      "Tónico estomacal"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "te-negro",
@@ -173,7 +314,16 @@
     "image": "assets/images/products/te-negro.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de té negro Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de té negro Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Estimulante",
+      "Antioxidante",
+      "Energizante",
+      "Diurético suave",
+      "Tonificante"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "te-rojo",
@@ -183,7 +333,16 @@
     "image": "assets/images/products/te-rojo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de té rojo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de té rojo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Adelgazante",
+      "Depurativo",
+      "Antioxidante",
+      "Digestivo",
+      "Energizante"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "te-verde",
@@ -193,7 +352,16 @@
     "image": "assets/images/products/te-verde.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de té verde Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de té verde Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Antioxidante",
+      "Energizante",
+      "Depurativo",
+      "Lipolítico",
+      "Estimulante metabólico"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "tilo",
@@ -203,7 +371,16 @@
     "image": "assets/images/products/tilo.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete de tilo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete de tilo Kalitko sobre fondo cálido claro",
+    "properties": [
+      "Sedante",
+      "Ansiolítico",
+      "Calmante",
+      "Relajante muscular",
+      "Hipnótico suave"
+    ],
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "blend-acidez",
@@ -212,7 +389,9 @@
     "image": "assets/images/products/blend-acidez.webp",
     "imageWidth": 1122,
     "imageHeight": 1402,
-    "alt": "Paquete del blend Acidez Kalitko sobre fondo cálido claro"
+    "alt": "Paquete del blend Acidez Kalitko sobre fondo cálido claro",
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "blend-adelgazar",
@@ -221,7 +400,9 @@
     "image": "assets/images/products/blend-adelgazar.webp",
     "imageWidth": 1024,
     "imageHeight": 1536,
-    "alt": "Paquete del blend Adelgazar Kalitko sobre fondo cálido claro"
+    "alt": "Paquete del blend Adelgazar Kalitko sobre fondo cálido claro",
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "blend-floral",
@@ -230,7 +411,9 @@
     "image": "assets/images/products/blend-floral.webp",
     "imageWidth": 439,
     "imageHeight": 662,
-    "alt": "Paquete del blend Floral Kalitko sobre fondo cálido claro"
+    "alt": "Paquete del blend Floral Kalitko sobre fondo cálido claro",
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "blend-lenitivo",
@@ -239,7 +422,9 @@
     "image": "assets/images/products/blend-lenitivo.webp",
     "imageWidth": 467,
     "imageHeight": 700,
-    "alt": "Paquete del blend Lenitivo Kalitko sobre fondo cálido claro"
+    "alt": "Paquete del blend Lenitivo Kalitko sobre fondo cálido claro",
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "blend-otonal",
@@ -248,7 +433,9 @@
     "image": "assets/images/products/blend-otonal.webp",
     "imageWidth": 1024,
     "imageHeight": 1536,
-    "alt": "Paquete del blend Otoñal Kalitko sobre fondo cálido claro"
+    "alt": "Paquete del blend Otoñal Kalitko sobre fondo cálido claro",
+    "retailPrice": null,
+    "priceOnRequest": true
   },
   {
     "id": "tradicional",

@@ -16,7 +16,7 @@ function hasMeasure(product) {
 }
 
 function supportsDetail(product) {
-  return product.category === "hierbas" || product.category === "yerbas";
+  return product.category === "hierbas";
 }
 
 function backImage(product) {
@@ -41,7 +41,7 @@ function renderProductCard(product, position, total) {
           loading="lazy" decoding="async" alt="${escapeHtml(product.alt)}">
         <span class="photo-index">${String(position).padStart(2, "0")} / ${String(total).padStart(2, "0")}</span>
         ${back ? `<button class="card-back-thumb" type="button" data-card-back="${escapeHtml(product.id)}"
-          aria-label="Ampliar etiqueta trasera de ${escapeHtml(product.name)}">
+          aria-label="Ver parte trasera de ${escapeHtml(product.name)}">
           <img src="${escapeHtml(back.src)}" width="${back.width}" height="${back.height}" loading="lazy" decoding="async" alt="">
         </button>` : ""}
       </div>
@@ -182,7 +182,7 @@ export function setupCatalogue({ container, products, onShowDetail, onOpenImage 
     if (backButton) {
       const product = productsById.get(backButton.dataset.cardBack);
       const image = backImage(product);
-      if (image) onOpenImage(image, backButton);
+      if (image) onOpenImage(image, backButton, { compact: true });
     }
   });
 

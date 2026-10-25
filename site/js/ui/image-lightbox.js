@@ -8,8 +8,9 @@ export function setupImageLightbox() {
     dialog.close();
   }
 
-  function open(imageData, sourceButton) {
+  function open(imageData, sourceButton, { compact = false } = {}) {
     trigger = sourceButton || document.activeElement;
+    dialog.classList.toggle("image-lightbox--compact", compact);
     image.src = imageData.src;
     image.alt = imageData.alt;
     image.width = imageData.width;
