@@ -1,13 +1,15 @@
 import { formatMeasure, formatMoney, formatWeight } from "../utils/format.js";
+import { hasMeasure } from "../utils/product.js";
 import { isPriceOnRequest, unitPrice } from "./pricing.js";
 
 export function buildPreview(summary) {
   const productLines = summary.lines.map(({ product, quantity }) => {
+    const measure = hasMeasure(product) ? ` (${formatMeasure(product.weightGrams)})` : "";
     if (isPriceOnRequest(product)) {
-      return `• ${quantity} × ${product.name} (${formatMeasure(product.weightGrams)}) — precio a confirmar`;
+      return `• ${quantity} × ${product.name}${measure} — precio a confirmar`;
     }
     const price = unitPrice(product, summary.wholesaleActive);
-    return `• ${product.name} (${formatMeasure(product.weightGrams)}): ${quantity} × ${formatMoney(price)} = ${formatMoney(price * quantity)}`;
+    return `• ${product.name}${measure}: ${quantity} × ${formatMoney(price)} = ${formatMoney(price * quantity)}`;
   });
 
   const totalLine = summary.hasQuotedProducts

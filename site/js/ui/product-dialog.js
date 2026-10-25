@@ -1,5 +1,6 @@
 import { canAddToCart, hasValidPrice } from "../commerce/pricing.js";
-import { escapeHtml, formatMeasure, formatMoney } from "../utils/format.js";
+import { escapeHtml, formatMoney } from "../utils/format.js";
+import { measureText } from "../utils/product.js";
 
 const technicalSections = [
   ["description", "Descripción"],
@@ -112,9 +113,7 @@ export function setupProductDialog({ onAdd, onOpenImage }) {
     activeGallery = validGallery(product);
     trigger = sourceButton || document.activeElement;
     title.textContent = product.name;
-    meta.textContent = Number.isFinite(Number(product.weightGrams)) && Number(product.weightGrams) > 0
-      ? formatMeasure(product.weightGrams)
-      : "";
+    meta.textContent = measureText(product);
     price.innerHTML = hasValidPrice(product)
       ? `${formatMoney(product.retailPrice)} <small>muestra</small>`
       : "Precio a confirmar";

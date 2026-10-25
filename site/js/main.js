@@ -19,9 +19,11 @@ async function start() {
   const products = await loadProducts();
   const list = document.querySelector("#product-list");
   const cart = createCart(products);
+  const productsById = new Map(products.map((product) => [product.id, product]));
   const status = document.querySelector("#status");
   const addProduct = (id) => {
-    if (cart.add(id) > 0) status.textContent = "Producto agregado a la bolsa.";
+    const product = productsById.get(id);
+    if (product && cart.add(id) > 0) status.textContent = `Se agregó ${product.name} a la bolsa.`;
   };
   const lightbox = setupImageLightbox();
   const productDialog = setupProductDialog({

@@ -1,6 +1,17 @@
 import { buildPreview } from "../commerce/preview.js";
 import { isPriceOnRequest, summarizeCart, unitPrice } from "../commerce/pricing.js";
-import { escapeHtml, formatMeasure, formatMoney, formatWeight } from "../utils/format.js";
+import { escapeHtml, formatMoney, formatWeight } from "../utils/format.js";
+import { measureText } from "../utils/product.js";
+
+export function cartLineMeta(product, wholesaleActive) {
+  const details = [];
+  const measure = measureText(product);
+  if (measure) details.push(measure);
+  details.push(isPriceOnRequest(product)
+    ? "Precio a confirmar"
+    : `${formatMoney(unitPrice(product, wholesaleActive))} c/u · muestra`);
+  return details.join(" · ");
+}
 
 export function setupCartDrawer({ cart, products, minimumGrams }) {
   const drawer = document.querySelector("#cart-dialog");
@@ -46,7 +57,7 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
       const pending = isPriceOnRequest(product);
       return `<div class="cart-row">
         <div><h3>${escapeHtml(product.name)}</h3>
-          <small>${formatMeasure(product.weightGrams)} · ${pending ? "Precio a confirmar" : `${formatMoney(price)} c/u · muestra`}</small>
+          <small>${cartLineMeta(product, summary.wholesaleActive)}</small>
           <div class="qty">
             <button type="button" data-qty="${escapeHtml(product.id)}" data-step="-1" aria-label="Quitar una unidad de ${escapeHtml(product.name)}">−</button>
             <output aria-label="Cantidad">${quantity}</output>
