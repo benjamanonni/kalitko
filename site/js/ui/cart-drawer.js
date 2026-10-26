@@ -1,5 +1,5 @@
-import { buildPreview } from "../commerce/preview.js";
 import { isPriceOnRequest, summarizeCart, unitPrice } from "../commerce/pricing.js";
+import { CART_SESSION_KEY, cartSessionPayload } from "../commerce/session-cart.js";
 import { escapeHtml, formatMoney, formatWeight } from "../utils/format.js";
 import { measureText } from "../utils/product.js";
 
@@ -15,8 +15,8 @@ export function cartLineMeta(product, wholesaleActive) {
 
 export function setupCartDrawer({ cart, products, minimumGrams }) {
   const drawer = document.querySelector("#cart-dialog");
-  const preview = document.querySelector("#preview-dialog");
   const cartItems = document.querySelector("#cart-items");
+  const status = document.querySelector("#status");
   const productById = new Map(products.map((product) => [product.id, product]));
   const dialogTriggers = new WeakMap();
   let latestSummary = summarizeCart([], minimumGrams);
@@ -50,7 +50,7 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
       ? "A confirmar ↗"
       : `${formatMoney(summary.total)} ↗`;
     document.querySelector(".floating-bag").classList.toggle("is-visible", summary.itemCount > 0);
-    document.querySelector("#preview-order").disabled = summary.itemCount === 0;
+    document.querySelector("#continue-shipping").disabled = summary.itemCount === 0;
 
     cartItems.innerHTML = summary.lines.length ? summary.lines.map(({ product, quantity }) => {
       const price = unitPrice(product, summary.wholesaleActive);
@@ -96,10 +96,15 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
     button.addEventListener("click", () => openDialog(drawer, button));
   });
   document.querySelector("[data-close-cart]").addEventListener("click", () => closeDialog(drawer));
-  document.querySelector("#preview-close").addEventListener("click", () => closeDialog(preview));
-  document.querySelector("#preview-order").addEventListener("click", (event) => {
-    document.querySelector("#preview-text").textContent = buildPreview(latestSummary);
-    openDialog(preview, event.currentTarget);
+  document.querySelector("#continue-shipping").addEventListener("click", () => {
+    if (latestSummary.itemCount === 0) return;
+    try {
+      const payload = cartSessionPayload(latestSummary.lines);
+      sessionStorage.setItem(CART_SESSION_KEY, JSON.stringify(payload));
+      window.location.assign("envio.html");
+    } catch {
+      status.textContent = "No pudimos continuar con el envío. Volvé a intentarlo.";
+    }
   });
   cartItems.addEventListener("click", (event) => {
     const quantityButton = event.target.closest("[data-qty]");
@@ -107,10 +112,8 @@ export function setupCartDrawer({ cart, products, minimumGrams }) {
     if (quantityButton) cart.change(quantityButton.dataset.qty, Number(quantityButton.dataset.step));
     if (removeButton) cart.remove(removeButton.dataset.remove);
   });
-  [drawer, preview].forEach((dialog) => {
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) closeDialog(dialog);
-    });
+  drawer.addEventListener("click", (event) => {
+    if (event.target === drawer) closeDialog(drawer);
   });
   cart.subscribe(render);
   render(cart.lines());

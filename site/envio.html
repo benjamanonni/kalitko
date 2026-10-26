@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#243d2c">
+  <meta name="description" content="Datos de envío para coordinar un pedido con Kalitko.">
+  <title>Datos de envío — Kalitko</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <script type="module" src="js/checkout.js"></script>
+</head>
+
+<body class="checkout-page">
+  <header class="checkout-header">
+    <div class="shell checkout-header-inner">
+      <a class="brand" href="index.html#inicio" aria-label="Kalitko, ir al inicio">
+        <img src="assets/images/brand/logo-oficial.png" width="853" height="799"
+          alt="Logo oficial de Kalitko, montañas y sol sobre el nombre de la marca">
+        <span class="brand-word">KALITKO</span>
+      </a>
+      <a class="checkout-back" href="index.html#catalogo">← Volver al catálogo</a>
+    </div>
+  </header>
+
+  <main class="shell checkout-main">
+    <header class="checkout-title">
+      <p class="intro-label">Coordinación del pedido</p>
+      <h1>Datos de envío</h1>
+      <p>Completá tus datos para preparar el mensaje. Kalitko confirmará disponibilidad, envío y total final.</p>
+    </header>
+
+    <section class="checkout-empty" id="checkout-empty" hidden aria-labelledby="empty-title">
+      <h2 id="empty-title">Tu bolsa está vacía</h2>
+      <p>Volvé al catálogo para elegir los productos que querés consultar.</p>
+      <a class="main-action" href="index.html#catalogo">Volver al catálogo <span aria-hidden="true">→</span></a>
+    </section>
+
+    <div class="checkout-grid" id="checkout-content" hidden>
+      <form class="shipping-form" id="shipping-form" novalidate>
+        <fieldset>
+          <legend>Datos de contacto</legend>
+          <div class="form-field">
+            <label for="full-name">Nombre y apellido <span aria-hidden="true">*</span></label>
+            <input id="full-name" name="fullName" type="text" autocomplete="name" required
+              aria-describedby="full-name-error">
+            <span class="field-error" id="full-name-error" data-error-for="fullName"></span>
+          </div>
+          <div class="form-field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+            <span class="field-error" id="email-error" data-error-for="email"></span>
+          </div>
+          <div class="form-field">
+            <label for="phone">Celular <span aria-hidden="true">*</span></label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required
+              aria-describedby="phone-error">
+            <span class="field-error" id="phone-error" data-error-for="phone"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Modalidad de entrega</legend>
+          <div class="delivery-options">
+            <label><input type="radio" name="deliveryMethod" value="home" checked> Envío a domicilio</label>
+            <label><input type="radio" name="deliveryMethod" value="branch"> Retiro en sucursal de Correo Argentino</label>
+          </div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="province">Provincia <span aria-hidden="true">*</span></label>
+              <input id="province" name="province" type="text" autocomplete="address-level1" required
+                aria-describedby="province-error">
+              <span class="field-error" id="province-error" data-error-for="province"></span>
+            </div>
+            <div class="form-field">
+              <label for="city">Localidad / Ciudad <span aria-hidden="true">*</span></label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" required
+                aria-describedby="city-error">
+              <span class="field-error" id="city-error" data-error-for="city"></span>
+            </div>
+          </div>
+
+          <div id="home-fields">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="postal-code">Código Postal / CPA <span aria-hidden="true">*</span></label>
+                <input id="postal-code" name="postalCode" type="text" autocomplete="postal-code" required
+                  aria-describedby="postal-code-error">
+                <span class="field-error" id="postal-code-error" data-error-for="postalCode"></span>
+              </div>
+              <div class="form-field">
+                <label for="street-number">Número / Altura <span aria-hidden="true">*</span></label>
+                <input id="street-number" name="streetNumber" type="text" autocomplete="address-line2" required
+                  aria-describedby="street-number-error">
+                <span class="field-error" id="street-number-error" data-error-for="streetNumber"></span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="street">Calle <span aria-hidden="true">*</span></label>
+              <input id="street" name="street" type="text" autocomplete="address-line1" required
+                aria-describedby="street-error">
+              <span class="field-error" id="street-error" data-error-for="street"></span>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="floor">Piso <span class="optional">Opcional</span></label>
+                <input id="floor" name="floor" type="text" autocomplete="address-line3">
+              </div>
+              <div class="form-field">
+                <label for="apartment">Departamento <span class="optional">Opcional</span></label>
+                <input id="apartment" name="apartment" type="text">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="reference">Referencia / observaciones <span class="optional">Opcional</span></label>
+              <textarea id="reference" name="reference" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div id="branch-fields" hidden>
+            <div class="form-field">
+              <label for="branch">Sucursal preferida <span aria-hidden="true">*</span></label>
+              <input id="branch" name="branch" type="text" disabled aria-describedby="branch-error branch-note">
+              <span class="field-error" id="branch-error" data-error-for="branch"></span>
+            </div>
+            <p class="delivery-note" id="branch-note">La disponibilidad de la sucursal y el costo del envío serán confirmados por Kalitko.</p>
+          </div>
+        </fieldset>
+
+        <p class="form-status" id="form-status" role="alert" aria-live="assertive"></p>
+        <p class="privacy-note">Usaremos estos datos únicamente para coordinar tu pedido y envío. No se guardan en el navegador.</p>
+      </form>
+
+      <aside class="order-summary" aria-labelledby="summary-title">
+        <p class="intro-label">Tu selección</p>
+        <h2 id="summary-title">Resumen del pedido</h2>
+        <ul id="summary-items"></ul>
+        <div class="summary-total">
+          <span id="summary-total-label"></span>
+          <strong id="summary-total-value"></strong>
+        </div>
+        <p class="pricing-note" id="summary-pricing-note"></p>
+      </aside>
+
+      <div class="checkout-actions">
+        <button class="checkout checkout-submit" id="send-whatsapp" type="submit" form="shipping-form">Enviar pedido por WhatsApp</button>
+        <p class="whatsapp-note" id="whatsapp-note" aria-live="polite"></p>
+      </div>
+    </div>
+  </main>
+
+  <noscript><p class="shell checkout-noscript">Activá JavaScript para recuperar tu bolsa y preparar el pedido.</p></noscript>
+</body>
+
+</html>

@@ -81,8 +81,8 @@ function renderAllView(container, products) {
       const visibleProducts = category === "hierbas"
         ? allInCategory.slice(0, ALL_YUYOS_LIMIT)
         : allInCategory;
+      
       const meta = categoryMeta[category];
-
       return `<section class="catalogue-group" aria-labelledby="catalogue-group-${category}">
         <header class="catalogue-group-head">
           <div>
