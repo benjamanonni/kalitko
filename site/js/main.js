@@ -38,7 +38,6 @@ async function start() {
     onOpenImage: lightbox.open
   });
   setupCartDrawer({ cart, products, minimumGrams: WHOLESALE_MIN_GRAMS });
-
   list.addEventListener("click", (event) => {
     const button = event.target.closest("[data-add]");
     if (!button) return;

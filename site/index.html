@@ -27,7 +27,7 @@
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <a href="#catalogo">Productos</a>
-        <a href="#mayor">Por mayor</a>
+        <a href="por-mayor.html">Por mayor</a>
         <a href="#marca">Nuestra historia</a>
       </nav>
       <div class="nav-right">
@@ -47,7 +47,7 @@
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="shell">
         <div class="hero-copy">
-          <p class="intro-label">Kalitko · Industria mendocina</p>
+          <p class="intro-label">Kalitko · Mendoza</p>
           <h1 id="hero-title">Lo de<br>siempre.<br><em>Pero distinto.</em></h1>
           <p>Yerba mate, hierbas y blends. Una historia familiar que hoy se comparte a nuestra manera.</p>
           <div class="hero-links">
@@ -68,7 +68,7 @@
       <div class="shell">
         <div class="catalogue-head">
           <div>
-            <p class="intro-label">Yerbas y hierbas · Kalitko</p>
+            <p class="intro-label">Yerbas · Yuyos · Blends</p>
             <h2 id="catalogue-heading">Elegí el próximo.</h2>
           </div>
           <p class="head-info">Un poco de cada mundo: hierbas para acompañar el mate y variedades de yerba para
@@ -83,7 +83,14 @@
             <button type="button" data-filter="blends" aria-pressed="false">Blends</button>
             <button type="button" data-filter="hierbas" aria-pressed="false">Yuyos</button>
           </div>
-
+          <div class="view-switcher" role="group" aria-label="Cambiar vista del catálogo">
+            <button type="button" data-catalogue-layout="grid" aria-label="Vista grilla" aria-pressed="true">
+              <span aria-hidden="true">▦</span>
+            </button>
+            <button type="button" data-catalogue-layout="compact" aria-label="Vista compacta" aria-pressed="false">
+              <span aria-hidden="true">☷</span>
+            </button>
+          </div>
         </div>
         <div class="catalogue-content" id="product-list"><noscript>Activá JavaScript para ver el catálogo demostrativo y usar la
             bolsa.</noscript></div>
@@ -195,24 +202,6 @@
       </div>
     </section>
 
-    <section class="major-section" id="mayor" aria-labelledby="bulk-heading">
-      <div class="shell major-grid">
-        <div>
-          <p class="intro-label">Para compartir más</p>
-          <h2 id="bulk-heading">Llevás más. <em>Pagás por mayor.</em></h2>
-          <p>Un mismo carrito para todos. En esta demo, cuando sumás 12 kg de yerba elegible, los paquetes pasan a su
-            precio por volumen. El progreso se ve en Mi bolsa, sin elegir otra modalidad de compra.</p>
-          <p class="pending-note">Mínimo informado: 12 kg. Combinación de variedades y tratamiento mayorista de hierbas
-            y blends: pendiente de confirmar con Kalitko.</p><a class="main-action" href="#catalogo">Volver a los
-            productos <span aria-hidden="true">↗</span></a>
-        </div>
-        <figure class="major-photo"><img src="assets/images/products/yerba-cierre.webp" width="825" height="1100"
-            loading="lazy" decoding="async"
-            alt="Bolsa de yerba Kalitko junto a un mate sobre un tejido en un entorno natural">
-          <figcaption>Productos Kalitko</figcaption>
-        </figure>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -227,7 +216,7 @@
           <h2 class="footer-title">Explorar</h2>
           <ul>
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#mayor">Por mayor</a></li>
+            <li><a href="por-mayor.html">Por mayor</a></li>
             <li><a href="#marca">Nuestra historia</a></li>
           </ul>
         </nav>

@@ -16,7 +16,7 @@
   --font-serif: Georgia, "Times New Roman", serif;
   --font-sans: "Trebuchet MS", Arial, sans-serif;
   --shell: 1380px;
-  --header-offset: 112px;
+  --header-offset: 84px;
   --space-section: clamp(4.5rem, 8vw, 7rem);
   color-scheme: light;
 }

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#243d2c">
+  <meta name="description" content="Armá tu pedido mayorista de Kalitko y coordiná los detalles por WhatsApp.">
+  <title>Por mayor — Kalitko</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/wholesale-page.css">
+  <script type="module" src="js/wholesale-page.js"></script>
+</head>
+
+<body class="wholesale-page">
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html#inicio" aria-label="Kalitko, ir al inicio">
+        <img src="assets/images/brand/logo-oficial.png" width="853" height="799"
+          alt="Logo oficial de Kalitko, montañas y sol sobre el nombre de la marca">
+        <span class="brand-word">KALITKO</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="index.html#catalogo">Productos</a>
+        <a href="por-mayor.html" aria-current="page">Por mayor</a>
+        <a href="index.html#marca">Nuestra historia</a>
+      </nav>
+      <div class="nav-right">
+        <a class="bag-button wholesale-bag" href="#resumen" aria-label="Ir al resumen del pedido mayorista">
+          Mi pedido <span data-wholesale-count>0</span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false"
+          aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wholesale-intro" aria-labelledby="wholesale-title">
+      <div class="shell">
+        <div class="wholesale-intro-copy">
+          <p class="intro-label">Kalitko · Mendoza</p>
+          <h1 id="wholesale-title">Por mayor.</h1>
+          <p>Armá tu pedido y coordiná disponibilidad, envío, datos y pago directamente por WhatsApp.</p>
+        </div>
+        <div class="wholesale-rules" aria-label="Condiciones mayoristas vigentes">
+          <article>
+            <span>01</span>
+            <div><strong>Yuyos</strong><p>100 unidades combinadas.</p></div>
+          </article>
+          <article>
+            <span>02</span>
+            <div><strong>Blends</strong><p>Disponibles por mayor, sin mínimo.</p></div>
+          </article>
+          <article>
+            <span>03</span>
+            <div><strong>Yerbas</strong><p>Precios confirmados desde 12 kg entre variedades elegibles; el resto se cotiza.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wholesale-order" aria-labelledby="order-title">
+      <div class="shell">
+        <header class="wholesale-order-head">
+          <div>
+            <p class="intro-label">Listado comercial</p>
+            <h2 id="order-title">Armá tu pedido.</h2>
+          </div>
+          <label class="wholesale-search">
+            <span class="sr-only">Buscar productos</span>
+            <input id="wholesale-search" type="search" placeholder="Buscar por producto o familia" autocomplete="off">
+          </label>
+        </header>
+
+        <div class="wholesale-filters" role="group" aria-label="Filtrar productos mayoristas">
+          <button type="button" data-wholesale-filter="all" aria-pressed="true">Todos</button>
+          <button type="button" data-wholesale-filter="yerbas" aria-pressed="false">Yerbas</button>
+          <button type="button" data-wholesale-filter="blends" aria-pressed="false">Blends</button>
+          <button type="button" data-wholesale-filter="hierbas" aria-pressed="false">Yuyos</button>
+        </div>
+
+        <div class="wholesale-order-layout">
+          <div class="wholesale-sheet" aria-label="Productos disponibles para consulta mayorista">
+            <div class="wholesale-sheet-head" aria-hidden="true">
+              <span>Familia</span><span>Imagen</span><span>Producto</span><span>Presentación</span><span>Precio mayorista</span><span>Cantidad</span>
+            </div>
+            <div id="wholesale-page-list" aria-live="polite"></div>
+            <p class="wholesale-empty" id="wholesale-empty" hidden>No encontramos productos con esa búsqueda.</p>
+          </div>
+
+          <aside class="wholesale-page-summary" id="resumen" aria-labelledby="summary-title">
+            <p class="intro-label">Tu consulta</p>
+            <h2 id="summary-title">Resumen</h2>
+            <dl>
+              <div><dt>Yerbas</dt><dd id="wholesale-yerbas-count">0 unidades</dd></div>
+              <div><dt>Yuyos</dt><dd id="wholesale-yuyos-count">0 unidades</dd></div>
+              <div><dt>Blends</dt><dd id="wholesale-blends-count">0 unidades</dd></div>
+            </dl>
+
+            <div class="wholesale-progress-block">
+              <div><strong>Yuyos combinados</strong><span id="wholesale-yuyos-ratio">0 / 100</span></div>
+              <progress id="wholesale-yuyos-progress" max="100" value="0" aria-label="Progreso hasta 100 unidades de Yuyos"></progress>
+              <p id="wholesale-yuyos-status">Faltan 100 unidades para la condición mayorista.</p>
+            </div>
+            <div class="wholesale-condition">
+              <strong>Yerbas elegibles</strong>
+              <p id="wholesale-yerbas-status">0 kg / 12 kg elegibles.</p>
+            </div>
+
+            <div class="wholesale-page-totals">
+              <span>Subtotal conocido</span>
+              <strong id="wholesale-subtotal">Sin subtotal confirmado</strong>
+              <small id="wholesale-quoted">0 líneas a cotizar</small>
+            </div>
+            <button class="checkout" id="wholesale-whatsapp" type="button" disabled>Enviar pedido por WhatsApp</button>
+            <p class="wholesale-page-note" id="wholesale-whatsapp-note" aria-live="polite"></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <section class="footer-block footer-brand" aria-labelledby="footer-kalitko-title">
+          <h2 class="footer-title" id="footer-kalitko-title">Kalitko · Mendoza</h2>
+          <p>Yerba mate, yuyos y blends con identidad mendocina.</p>
+        </section>
+        <nav class="footer-block" aria-label="Explorar">
+          <h2 class="footer-title">Explorar</h2>
+          <ul>
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="por-mayor.html" aria-current="page">Por mayor</a></li>
+            <li><a href="index.html#marca">Nuestra historia</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-block" aria-label="Productos">
+          <h2 class="footer-title">Productos</h2>
+          <ul>
+            <li><a href="index.html#catalogo">Yerbas</a></li>
+            <li><a href="index.html#catalogo">Blends</a></li>
+            <li><a href="index.html#catalogo">Yuyos</a></li>
+          </ul>
+        </nav>
+        <section class="footer-block footer-origin" aria-labelledby="footer-origin-title">
+          <h2 class="footer-title" id="footer-origin-title">Origen</h2>
+          <p>Mendoza, Argentina</p>
+          <a href="#wholesale-title">Volver arriba ↑</a>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Kalitko</p>
+        <a href="index.html#inicio">Volver al inicio</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

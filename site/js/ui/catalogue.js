@@ -4,7 +4,7 @@ import { hasMeasure } from "../utils/product.js";
 
 const ALL_VIEW_ORDER = ["yerbas", "blends", "hierbas"];
 const ALL_YUYOS_LIMIT = 6;
-const YUYOS_PAGE_SIZE = 8;
+const MOBILE_YUYOS_PAGE_SIZE = 8;
 
 const categoryMeta = {
   yerbas: { title: "Yerbas", label: "Yerbas" },
@@ -68,10 +68,22 @@ function renderCards(products, total = products.length) {
   return products.map((product, index) => renderProductCard(product, index + 1, total)).join("");
 }
 
+function renderProductRail(products, total, label) {
+  return `<div class="product-rail" data-product-rail>
+    <button class="rail-nav rail-nav--prev" type="button" data-scroll-products="prev"
+      aria-label="Ver productos anteriores de ${escapeHtml(label)}">←</button>
+    <div class="products" tabindex="0" aria-label="Productos de ${escapeHtml(label)}">
+      ${renderCards(products, total)}
+    </div>
+    <button class="rail-nav rail-nav--next" type="button" data-scroll-products="next"
+      aria-label="Ver productos siguientes de ${escapeHtml(label)}">→</button>
+  </div>`;
+}
+
 function categoryAction(category, count) {
   if (category === "yerbas") return "Ver todas las yerbas";
   if (category === "blends") return "Ver todos los blends";
-  return `Ver los ${count} yuyos`;
+  return "Ver todos los yuyos";
 }
 
 function renderAllView(container, products) {
@@ -90,7 +102,7 @@ function renderAllView(container, products) {
             <h3 id="catalogue-group-${category}">${meta.title}</h3>
           </div>
         </header>
-        <div class="products">${renderCards(visibleProducts, allInCategory.length)}</div>
+        ${renderProductRail(visibleProducts, allInCategory.length, meta.label)}
         <button class="category-link" type="button" data-view-category="${category}">
           ${categoryAction(category, allInCategory.length)} <span aria-hidden="true">→</span>
         </button>
@@ -99,24 +111,24 @@ function renderAllView(container, products) {
   </div>`;
 }
 
-function renderCategoryView(container, products, category, yuyosVisible) {
+function renderCategoryView(container, products, category, visibleYuyos = Number.POSITIVE_INFINITY) {
   const allInCategory = products.filter((product) => product.category === category);
   const visibleProducts = category === "hierbas"
-    ? allInCategory.slice(0, yuyosVisible)
+    ? allInCategory.slice(0, visibleYuyos)
     : allInCategory;
+  const hasMoreYuyos = category === "hierbas" && visibleProducts.length < allInCategory.length;
   const meta = categoryMeta[category];
-  const remaining = allInCategory.length - visibleProducts.length;
 
   container.innerHTML = `<section class="catalogue-category" aria-labelledby="catalogue-category-heading">
     <header class="catalogue-category-head">
-      <p class="intro-label">${String(allInCategory.length).padStart(2, "0")} productos</p>
-      <h3 id="catalogue-category-heading">${meta.title}</h3>
+      <div>
+        <p class="intro-label">${String(allInCategory.length).padStart(2, "0")} productos</p>
+        <h3 id="catalogue-category-heading">${meta.title}</h3>
+      </div>
     </header>
-    <div class="products">${renderCards(visibleProducts, allInCategory.length)}</div>
-    ${category === "hierbas" && remaining > 0
-      ? `<button class="load-more" type="button" data-load-more-yuyos>
-          Ver más yuyos <span aria-hidden="true">+${Math.min(YUYOS_PAGE_SIZE, remaining)}</span>
-        </button>`
+    ${renderProductRail(visibleProducts, allInCategory.length, meta.label)}
+    ${hasMoreYuyos
+      ? '<button class="load-more" type="button" data-load-more-yuyos>Ver más yuyos</button>'
       : ""}
   </section>`;
 }
@@ -132,22 +144,62 @@ function scrollToCatalogue() {
 export function setupCatalogue({ container, products, onShowDetail, onOpenImage }) {
   const productsById = new Map(products.map((product) => [product.id, product]));
   const filters = [...document.querySelectorAll("[data-filter]")];
+  const layoutButtons = [...document.querySelectorAll("[data-catalogue-layout]")];
+  const mobileYuyosQuery = window.matchMedia("(max-width: 720px)");
   let activeView = "all";
-  let yuyosVisible = YUYOS_PAGE_SIZE;
+  let activeLayout = "grid";
+  let visibleMobileYuyos = MOBILE_YUYOS_PAGE_SIZE;
 
   function syncFilters() {
     filters.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.filter === activeView));
     });
   }
+  function syncLayout() {
+    container.classList.toggle("is-compact", activeLayout === "compact");
+    container.classList.toggle("is-yuyos-view", activeView === "hierbas");
+    layoutButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.catalogueLayout === activeLayout));
+    });
+  }
+  function updateRail(rail) {
+    const productsElement = rail.querySelector(".products");
+    const previous = rail.querySelector('[data-scroll-products="prev"]');
+    const next = rail.querySelector('[data-scroll-products="next"]');
+    if (!productsElement || !previous || !next) return;
+    const maximum = productsElement.scrollWidth - productsElement.clientWidth;
+    const scrollable = maximum > 2;
+    rail.classList.toggle("is-scrollable", scrollable);
+    previous.disabled = !scrollable || productsElement.scrollLeft <= 2;
+    next.disabled = !scrollable || productsElement.scrollLeft >= maximum - 2;
+  }
+  function updateRails() {
+    container.querySelectorAll("[data-product-rail]").forEach(updateRail);
+  }
+  function observeRails() {
+    container.querySelectorAll(".products").forEach((productsElement) => {
+      productsElement.addEventListener("scroll", () => {
+        const rail = productsElement.closest("[data-product-rail]");
+        if (rail) updateRail(rail);
+      }, { passive: true });
+    });
+    requestAnimationFrame(updateRails);
+  }
   function render() {
     if (activeView === "all") renderAllView(container, products);
-    else renderCategoryView(container, products, activeView, yuyosVisible);
+    else {
+      const visibleYuyos = activeView === "hierbas" && mobileYuyosQuery.matches
+        ? visibleMobileYuyos
+        : Number.POSITIVE_INFINITY;
+      renderCategoryView(container, products, activeView, visibleYuyos);
+    }
+    syncLayout();
+    observeRails();
   }
   function setView(view, { scroll = false } = {}) {
     if (view !== "all" && !categoryMeta[view]) return;
-    activeView = view;
-    if (view === "hierbas") yuyosVisible = YUYOS_PAGE_SIZE;
+    activeView = view === "all" ? "all" : view;
+    if (activeView === "hierbas") visibleMobileYuyos = MOBILE_YUYOS_PAGE_SIZE;
     syncFilters();
     render();
     if (scroll) requestAnimationFrame(scrollToCatalogue);
@@ -155,18 +207,37 @@ export function setupCatalogue({ container, products, onShowDetail, onOpenImage 
   filters.forEach((button) => {
     button.addEventListener("click", () => setView(button.dataset.filter));
   });
+  layoutButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const layout = button.dataset.catalogueLayout;
+      if (layout !== "grid" && layout !== "compact") return;
+      activeLayout = layout;
+      syncLayout();
+      requestAnimationFrame(updateRails);
+    });
+  });
   container.addEventListener("click", (event) => {
     const categoryButton = event.target.closest("[data-view-category]");
     const loadMoreButton = event.target.closest("[data-load-more-yuyos]");
     const detailButton = event.target.closest("[data-detail]");
     const backButton = event.target.closest("[data-card-back]");
+    const scrollButton = event.target.closest("[data-scroll-products]");
+    if (scrollButton) {
+      const productsElement = scrollButton.closest("[data-product-rail]")?.querySelector(".products");
+      if (productsElement) {
+        const direction = scrollButton.dataset.scrollProducts === "prev" ? -1 : 1;
+        productsElement.scrollBy({ left: productsElement.clientWidth * .82 * direction, behavior: "smooth" });
+      }
+    }
     if (categoryButton) setView(categoryButton.dataset.viewCategory, { scroll: true });
-    if (loadMoreButton) {
+    if (loadMoreButton && activeView === "hierbas" && mobileYuyosQuery.matches) {
       const yuyos = products.filter((product) => product.category === "hierbas");
-      const firstNewProduct = yuyos[yuyosVisible];
-      yuyosVisible += YUYOS_PAGE_SIZE;
+      const firstNewProduct = yuyos[visibleMobileYuyos];
+      const scrollPosition = window.scrollY;
+      visibleMobileYuyos = Math.min(visibleMobileYuyos + MOBILE_YUYOS_PAGE_SIZE, yuyos.length);
       render();
       if (firstNewProduct) requestAnimationFrame(() => {
+        window.scrollTo({ top: scrollPosition, behavior: "auto" });
         const productCard = container.querySelector(`[data-product-id="${firstNewProduct.id}"]`);
         if (!(productCard instanceof HTMLElement)) return;
         productCard.setAttribute("tabindex", "-1");
@@ -183,6 +254,12 @@ export function setupCatalogue({ container, products, onShowDetail, onOpenImage 
       const image = backImage(product);
       if (image) onOpenImage(image, backButton, { compact: true });
     }
+  });
+  window.addEventListener("resize", updateRails, { passive: true });
+  mobileYuyosQuery.addEventListener("change", () => {
+    if (activeView !== "hierbas") return;
+    visibleMobileYuyos = MOBILE_YUYOS_PAGE_SIZE;
+    render();
   });
   setView("all");
   return {
